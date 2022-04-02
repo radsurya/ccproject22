@@ -1,0 +1,323 @@
+openapi: 3.0.0
+info:
+  title: Movies API
+  description: Cloud Computing Project - Movies API
+  contact:
+    email: fc57267@alunos.fc.ul.pt
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/fc44311/ccproject22/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://app.swaggerhub.com/apis/fc44311/ccproject22/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: admin
+  description: Perform administration activities (movies and ratings management)
+- name: movie
+  description: Handle movies information
+- name: rating
+  description: Handle movies ratings information
+paths:
+  /admin/add_movie:
+    post:
+      tags:
+      - admin
+      summary: Add a new movie information
+      operationId: admin_add_movie
+      parameters:
+      - name: movie
+        in: query
+        description: ID related to the movie on Mubi
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/movie'
+      responses:
+        "200":
+          description: Successful operation. Movie added.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+        "400":
+          description: Bad request. Invalid arguments.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.admin_controller
+  /admin/delete_movie/{movie_id}:
+    delete:
+      tags:
+      - admin
+      summary: Deleting an existing movie data
+      operationId: admin_delete_movie
+      parameters:
+      - name: movie_id
+        in: path
+        description: ID related to the movie on Mubi
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "202":
+          description: Accepted. Movie deleted.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+        "204":
+          description: No content. Invalid movie id.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.admin_controller
+  /movies/search:
+    get:
+      tags:
+      - movie
+      summary: Search for movies by given search parameters
+      operationId: movies_search
+      parameters:
+      - name: keyword
+        in: query
+        description: Keyword that should be looked up in movie titles
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of movies to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            aplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/movie'
+                x-content-type: aplication/json
+            aplication/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/movie'
+        "400":
+          description: Bad request. Invalid arguments.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.movie_controller
+  /movie/get_by_id/{movie_id}:
+    get:
+      tags:
+      - movie
+      summary: Get movie information by given movie id
+      operationId: movie_get_by_id
+      parameters:
+      - name: movie_id
+        in: path
+        description: Id of the movie
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            aplication/json:
+              schema:
+                $ref: '#/components/schemas/movie'
+            aplication/xml:
+              schema:
+                $ref: '#/components/schemas/movie'
+        "400":
+          description: Bad request. Invalid arguments.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.movie_controller
+  /rating/add_movie_rating:
+    post:
+      tags:
+      - rating
+      summary: Adds a rating to an existing movie
+      operationId: movies_add_movie_rating
+      parameters:
+      - name: rating
+        in: query
+        description: Rating object data
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/rating'
+      responses:
+        "200":
+          description: Successful operation. Movie rating added.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+        "400":
+          description: Bad request. Invalid arguments.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.rating_controller
+  /rating/edit_movie_rating:
+    put:
+      tags:
+      - rating
+      summary: Updates a rating of an existing movie
+      operationId: rating_edit_movie_rating
+      parameters:
+      - name: rating
+        in: query
+        description: Rating object data
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/rating'
+      responses:
+        "200":
+          description: Ok. Movie rating updated.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+        "400":
+          description: Bad request. Invalid arguments.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: boolean
+      x-openapi-router-controller: swagger_server.controllers.rating_controller
+components:
+  schemas:
+    movie:
+      type: object
+      properties:
+        movie_id:
+          type: string
+        movie_title:
+          type: string
+        movie_release_year:
+          type: string
+        movie_url:
+          type: string
+        movie_title_language:
+          type: string
+        movie_popularity:
+          type: string
+        movie_image_url:
+          type: string
+        director_id:
+          type: string
+        director_name:
+          type: string
+        director_url:
+          type: string
+        average_rating:
+          type: integer
+      example:
+        director_url: director_url
+        movie_release_year: movie_release_year
+        director_name: director_name
+        movie_popularity: movie_popularity
+        movie_title_language: movie_title_language
+        average_rating: 0
+        movie_id: movie_id
+        movie_title: movie_title
+        movie_image_url: movie_image_url
+        movie_url: movie_url
+        director_id: director_id
+    rating:
+      type: object
+      properties:
+        movie_id:
+          type: string
+        rating_id:
+          type: string
+        rating_url:
+          type: string
+        rating_score:
+          type: integer
+        rating_timestamp_utc:
+          type: string
+        critic:
+          type: string
+        critic_likes:
+          type: string
+        critic_comments:
+          type: string
+        user_id:
+          type: string
+        user_trialist:
+          type: boolean
+        user_subscriber:
+          type: boolean
+        user_eligible_for_trial:
+          type: boolean
+
