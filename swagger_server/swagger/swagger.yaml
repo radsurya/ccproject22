@@ -30,8 +30,8 @@ paths:
       parameters:
       - name: movie
         in: query
-        description: ID related to the movie on Mubi
-        required: true
+        description: Movie data to be added
+        required: false
         style: form
         explode: true
         schema:
@@ -58,6 +58,7 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.admin_controller
+
   /admin/delete_movie/{movie_id}:
     delete:
       tags:
@@ -95,6 +96,7 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.admin_controller
+
   /movies/search:
     get:
       tags:
@@ -144,6 +146,7 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.movie_controller
+
   /movie/get_by_id/{movie_id}:
     get:
       tags:
@@ -180,6 +183,7 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.movie_controller
+
   /rating/add_movie_rating:
     post:
       tags:
@@ -190,7 +194,7 @@ paths:
       - name: rating
         in: query
         description: Rating object data
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -217,6 +221,7 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.rating_controller
+
   /rating/edit_movie_rating:
     put:
       tags:
@@ -227,7 +232,7 @@ paths:
       - name: rating
         in: query
         description: Rating object data
-        required: true
+        required: false
         style: form
         explode: true
         schema:
