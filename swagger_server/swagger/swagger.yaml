@@ -269,13 +269,13 @@ components:
         movie_title:
           type: string
         movie_release_year:
-          type: string
+          type: integer
         movie_url:
           type: string
         movie_title_language:
           type: string
         movie_popularity:
-          type: string
+          type: integer
         movie_image_url:
           type: string
         director_id:
@@ -285,7 +285,7 @@ components:
         director_url:
           type: string
         average_rating:
-          type: integer
+          type: number
       example:
         director_url: director_url
         movie_release_year: movie_release_year
@@ -314,9 +314,9 @@ components:
         critic:
           type: string
         critic_likes:
-          type: string
+          type: integer
         critic_comments:
-          type: string
+          type: integer
         user_id:
           type: string
         user_trialist:

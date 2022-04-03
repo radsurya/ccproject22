@@ -4,6 +4,7 @@ import six
 from swagger_server.models.movie import Movie  # noqa: E501
 from swagger_server import util
 
+from swagger_server.data.movies_data import movies_data
 
 def movie_get_by_id(movie_id):  # noqa: E501
     """Get movie information by given movie id
@@ -15,7 +16,13 @@ def movie_get_by_id(movie_id):  # noqa: E501
 
     :rtype: Movie
     """
-    return 'do some magic!'
+
+    movie_found = False
+    for movie in movies_data:
+        if movie["movie_id"] == movie_id:
+            movie_found = movie
+
+    return movie_found
 
 
 def movies_search(keyword=None, limit=None):  # noqa: E501

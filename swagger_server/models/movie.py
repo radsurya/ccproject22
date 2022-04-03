@@ -22,13 +22,13 @@ class Movie(Model):
         :param movie_title: The movie_title of this Movie.  # noqa: E501
         :type movie_title: str
         :param movie_release_year: The movie_release_year of this Movie.  # noqa: E501
-        :type movie_release_year: str
+        :type movie_release_year: int
         :param movie_url: The movie_url of this Movie.  # noqa: E501
         :type movie_url: str
         :param movie_title_language: The movie_title_language of this Movie.  # noqa: E501
         :type movie_title_language: str
         :param movie_popularity: The movie_popularity of this Movie.  # noqa: E501
-        :type movie_popularity: str
+        :type movie_popularity: int
         :param movie_image_url: The movie_image_url of this Movie.  # noqa: E501
         :type movie_image_url: str
         :param director_id: The director_id of this Movie.  # noqa: E501
@@ -43,10 +43,10 @@ class Movie(Model):
         self.swagger_types = {
             'movie_id': str,
             'movie_title': str,
-            'movie_release_year': str,
+            'movie_release_year': int,
             'movie_url': str,
             'movie_title_language': str,
-            'movie_popularity': str,
+            'movie_popularity': int,
             'movie_image_url': str,
             'director_id': str,
             'director_name': str,
@@ -133,22 +133,22 @@ class Movie(Model):
         self._movie_title = movie_title
 
     @property
-    def movie_release_year(self) -> str:
+    def movie_release_year(self) -> int:
         """Gets the movie_release_year of this Movie.
 
 
         :return: The movie_release_year of this Movie.
-        :rtype: str
+        :rtype: int
         """
         return self._movie_release_year
 
     @movie_release_year.setter
-    def movie_release_year(self, movie_release_year: str):
+    def movie_release_year(self, movie_release_year: int):
         """Sets the movie_release_year of this Movie.
 
 
         :param movie_release_year: The movie_release_year of this Movie.
-        :type movie_release_year: str
+        :type movie_release_year: int
         """
 
         self._movie_release_year = movie_release_year
@@ -196,22 +196,22 @@ class Movie(Model):
         self._movie_title_language = movie_title_language
 
     @property
-    def movie_popularity(self) -> str:
+    def movie_popularity(self) -> int:
         """Gets the movie_popularity of this Movie.
 
 
         :return: The movie_popularity of this Movie.
-        :rtype: str
+        :rtype: int
         """
         return self._movie_popularity
 
     @movie_popularity.setter
-    def movie_popularity(self, movie_popularity: str):
+    def movie_popularity(self, movie_popularity: int):
         """Sets the movie_popularity of this Movie.
 
 
         :param movie_popularity: The movie_popularity of this Movie.
-        :type movie_popularity: str
+        :type movie_popularity: int
         """
 
         self._movie_popularity = movie_popularity
