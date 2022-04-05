@@ -7,17 +7,17 @@ from swagger_server import util
 from swagger_server.data.movies_data import movies_data
 from flask import make_response, abort
 
-
 def admin_add_movie(movie):  # noqa: E501
     """Add a new movie information
 
      # noqa: E501
 
-    :param movie: ID related to the movie on Mubi
+    :param movie: Movie data to be added
     :type movie: dict | bytes
 
     :rtype: bool
     """
+    
     if connexion.request.is_json:
         movie = Movie.from_dict(connexion.request.get_json())
 
@@ -26,7 +26,7 @@ def admin_add_movie(movie):  # noqa: E501
     # Does the movie exist already?
     exists=_check_if_exists(movie_title)
     if not exists:
-        movies_data.append(movie)
+        # movies_data.append(movie)
         return True, 200
 
     # Otherwise, they exist, that's an error
@@ -34,6 +34,7 @@ def admin_add_movie(movie):  # noqa: E501
         # Not sure about if we need the abort but it is used in tutorial
         # abort(400,False)
         return False,400
+    return True
 
 
 def admin_delete_movie(movie_id):  # noqa: E501
@@ -46,15 +47,15 @@ def admin_delete_movie(movie_id):  # noqa: E501
 
     :rtype: bool
     """
-    
-    # Does the movie exist already?
-    exists=_check_if_exists()
-    if not exists:
-        return False, 204
-    else:
-        idx=_get_movie_idx(movie_id)
-        del movies_data[idx]
-        return True, 202
+
+    movie_found = False
+    for movie in movies_data:
+        if movie['movie_id'] == movie_id:
+            movie_found = True
+            #TODO Delete in DB
+            return movie_found,202
+
+    return movie_found,204
 
 
 def _get_movie_idx(movie_id):
