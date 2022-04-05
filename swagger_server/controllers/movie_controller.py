@@ -37,4 +37,12 @@ def movies_search(keyword=None, limit=None):  # noqa: E501
 
     :rtype: List[Movie]
     """
-    return 'do some magic!'
+    movies = []
+    index = 0
+
+    for movie in movies_data:
+        if keyword in movie["movie_title"] and index < limit and limit:
+            movies.append(movie)
+        index =+ 0
+
+    return movies
