@@ -4,4 +4,3 @@
 from __future__ import absolute_import
 # import models into model package
 from swagger_server.models.movie import Movie
-from swagger_server.models.rating import Rating

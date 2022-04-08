@@ -14,7 +14,7 @@ class Movie(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, movie_id: str=None, movie_title: str=None, movie_release_year: str=None, movie_url: str=None, movie_title_language: str=None, movie_popularity: str=None, movie_image_url: str=None, director_id: str=None, director_name: str=None, director_url: str=None, average_rating: int=None):  # noqa: E501
+    def __init__(self, movie_id: str=None, movie_title: str=None, movie_release_year: int=None, movie_url: str=None, movie_title_language: str=None, movie_popularity: int=None, movie_image_url: str=None, director_id: str=None, director_name: str=None, director_url: str=None, average_rating: float=None):  # noqa: E501
         """Movie - a model defined in Swagger
 
         :param movie_id: The movie_id of this Movie.  # noqa: E501
@@ -38,7 +38,7 @@ class Movie(Model):
         :param director_url: The director_url of this Movie.  # noqa: E501
         :type director_url: str
         :param average_rating: The average_rating of this Movie.  # noqa: E501
-        :type average_rating: int
+        :type average_rating: float
         """
         self.swagger_types = {
             'movie_id': str,
@@ -51,7 +51,7 @@ class Movie(Model):
             'director_id': str,
             'director_name': str,
             'director_url': str,
-            'average_rating': int
+            'average_rating': float
         }
 
         self.attribute_map = {
@@ -301,22 +301,22 @@ class Movie(Model):
         self._director_url = director_url
 
     @property
-    def average_rating(self) -> int:
+    def average_rating(self) -> float:
         """Gets the average_rating of this Movie.
 
 
         :return: The average_rating of this Movie.
-        :rtype: int
+        :rtype: float
         """
         return self._average_rating
 
     @average_rating.setter
-    def average_rating(self, average_rating: int):
+    def average_rating(self, average_rating: float):
         """Sets the average_rating of this Movie.
 
 
         :param average_rating: The average_rating of this Movie.
-        :type average_rating: int
+        :type average_rating: float
         """
 
         self._average_rating = average_rating

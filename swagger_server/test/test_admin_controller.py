@@ -5,7 +5,6 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from swagger_server.models.movie import Movie  # noqa: E501
 from swagger_server.test import BaseTestCase
 
 
@@ -17,7 +16,12 @@ class TestAdminController(BaseTestCase):
 
         Add a new movie information
         """
-        query_string = [('movie', Movie())]
+        query_string = [('movie_title', 'movie_title_example'),
+                        ('movie_title_language', 'movie_title_language_example'),
+                        ('movie_image_url', 'movie_image_url_example'),
+                        ('director_id', 'director_id_example'),
+                        ('director_name', 'director_name_example'),
+                        ('director_url', 'director_url_example')]
         response = self.client.open(
             '/fc44311/ccproject22/1.0.0/admin/add_movie',
             method='POST',

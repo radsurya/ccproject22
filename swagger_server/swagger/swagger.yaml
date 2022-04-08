@@ -28,14 +28,54 @@ paths:
       summary: Add a new movie information
       operationId: admin_add_movie
       parameters:
-      - name: movie
+      - name: movie_title
         in: query
-        description: Movie data to be added
+        description: Title of the movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: movie_title_language
+        in: query
+        description: Language of title of the movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: movie_image_url
+        in: query
+        description: Image url of the movie
         required: false
         style: form
-        explode: true
+        explode: false
         schema:
-          $ref: '#/components/schemas/movie'
+          type: string
+      - name: director_id
+        in: query
+        description: Title of the movie
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: director_name
+        in: query
+        description: Title of the movie
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: director_url
+        in: query
+        description: Director url
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
           description: Successful operation. Movie added.
@@ -58,7 +98,6 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.admin_controller
-
   /admin/delete_movie/{movie_id}:
     delete:
       tags:
@@ -96,7 +135,6 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.admin_controller
-
   /movies/search:
     get:
       tags:
@@ -146,7 +184,6 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.movie_controller
-
   /movie/get_by_id/{movie_id}:
     get:
       tags:
@@ -183,7 +220,6 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.movie_controller
-
   /rating/add_movie_rating:
     post:
       tags:
@@ -191,14 +227,54 @@ paths:
       summary: Adds a rating to an existing movie
       operationId: movies_add_movie_rating
       parameters:
-      - name: rating
+      - name: movie_id
         in: query
-        description: Rating object data
+        description: Id of the movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: critic
+        in: query
+        description: Critic for a movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        description: Mubi user id
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: user_trialist
+        in: query
+        description: Is user trialist
         required: false
         style: form
-        explode: true
+        explode: false
         schema:
-          $ref: '#/components/schemas/rating'
+          type: boolean
+      - name: user_subscriber
+        in: query
+        description: Is user a subscriber
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: boolean
+      - name: user_eligible_for_trial
+        in: query
+        description: Is user eligible for trial
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: boolean
       responses:
         "200":
           description: Successful operation. Movie rating added.
@@ -221,7 +297,6 @@ paths:
               schema:
                 type: boolean
       x-openapi-router-controller: swagger_server.controllers.rating_controller
-
   /rating/edit_movie_rating:
     put:
       tags:
@@ -229,14 +304,94 @@ paths:
       summary: Updates a rating of an existing movie
       operationId: rating_edit_movie_rating
       parameters:
-      - name: rating
+      - name: movie_id
         in: query
-        description: Rating object data
+        description: Id of the movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: rating_id
+        in: query
+        description: Rating id of the movie
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: rating_url
+        in: query
+        description: Url of the rating on the movie
         required: false
         style: form
-        explode: true
+        explode: false
         schema:
-          $ref: '#/components/schemas/rating'
+          type: string
+      - name: rating_score
+        in: query
+        description: Rating score
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: integer
+      - name: critic
+        in: query
+        description: Critic for a movie
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: critic_likes
+        in: query
+        description: Number of critic likes on a movie
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: integer
+      - name: critic_comments
+        in: query
+        description: Number of critic comments on a movie
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: integer
+      - name: user_id
+        in: query
+        description: Mubi user id
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+      - name: user_trialist
+        in: query
+        description: Is user trialist
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: boolean
+      - name: user_subscriber
+        in: query
+        description: Is user a subscriber
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: boolean
+      - name: user_eligible_for_trial
+        in: query
+        description: Is user eligible for trial
+        required: false
+        style: form
+        explode: false
+        schema:
+          type: boolean
       responses:
         "200":
           description: Ok. Movie rating updated.
@@ -287,42 +442,15 @@ components:
         average_rating:
           type: number
       example:
-        director_url: director_url
-        movie_release_year: movie_release_year
-        director_name: director_name
-        movie_popularity: movie_popularity
-        movie_title_language: movie_title_language
-        average_rating: 0
         movie_id: movie_id
         movie_title: movie_title
-        movie_image_url: movie_image_url
+        movie_release_year: 2022
         movie_url: movie_url
+        movie_title_language: en
+        movie_popularity: 0
+        movie_image_url: movie_image_url
         director_id: director_id
-    rating:
-      type: object
-      properties:
-        movie_id:
-          type: string
-        rating_id:
-          type: string
-        rating_url:
-          type: string
-        rating_score:
-          type: integer
-        rating_timestamp_utc:
-          type: string
-        critic:
-          type: string
-        critic_likes:
-          type: integer
-        critic_comments:
-          type: integer
-        user_id:
-          type: string
-        user_trialist:
-          type: boolean
-        user_subscriber:
-          type: boolean
-        user_eligible_for_trial:
-          type: boolean
+        director_name: director_name
+        director_url: director_url
+        average_rating: 0
 

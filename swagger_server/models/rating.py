@@ -14,7 +14,7 @@ class Rating(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, movie_id: str=None, rating_id: str=None, rating_url: str=None, rating_score: int=None, rating_timestamp_utc: str=None, critic: str=None, critic_likes: str=None, critic_comments: str=None, user_id: str=None, user_trialist: bool=None, user_subscriber: bool=None, user_eligible_for_trial: bool=None):  # noqa: E501
+    def __init__(self, movie_id: str=None, rating_id: str=None, rating_url: str=None, rating_score: int=None, rating_timestamp_utc: str=None, critic: str=None, critic_likes: int=None, critic_comments: int=None, user_id: str=None, user_trialist: bool=None, user_subscriber: bool=None, user_eligible_for_trial: bool=None):  # noqa: E501
         """Rating - a model defined in Swagger
 
         :param movie_id: The movie_id of this Rating.  # noqa: E501
@@ -30,9 +30,9 @@ class Rating(Model):
         :param critic: The critic of this Rating.  # noqa: E501
         :type critic: str
         :param critic_likes: The critic_likes of this Rating.  # noqa: E501
-        :type critic_likes: str
+        :type critic_likes: int
         :param critic_comments: The critic_comments of this Rating.  # noqa: E501
-        :type critic_comments: str
+        :type critic_comments: int
         :param user_id: The user_id of this Rating.  # noqa: E501
         :type user_id: str
         :param user_trialist: The user_trialist of this Rating.  # noqa: E501
@@ -49,8 +49,8 @@ class Rating(Model):
             'rating_score': int,
             'rating_timestamp_utc': str,
             'critic': str,
-            'critic_likes': str,
-            'critic_comments': str,
+            'critic_likes': int,
+            'critic_comments': int,
             'user_id': str,
             'user_trialist': bool,
             'user_subscriber': bool,
@@ -222,43 +222,43 @@ class Rating(Model):
         self._critic = critic
 
     @property
-    def critic_likes(self) -> str:
+    def critic_likes(self) -> int:
         """Gets the critic_likes of this Rating.
 
 
         :return: The critic_likes of this Rating.
-        :rtype: str
+        :rtype: int
         """
         return self._critic_likes
 
     @critic_likes.setter
-    def critic_likes(self, critic_likes: str):
+    def critic_likes(self, critic_likes: int):
         """Sets the critic_likes of this Rating.
 
 
         :param critic_likes: The critic_likes of this Rating.
-        :type critic_likes: str
+        :type critic_likes: int
         """
 
         self._critic_likes = critic_likes
 
     @property
-    def critic_comments(self) -> str:
+    def critic_comments(self) -> int:
         """Gets the critic_comments of this Rating.
 
 
         :return: The critic_comments of this Rating.
-        :rtype: str
+        :rtype: int
         """
         return self._critic_comments
 
     @critic_comments.setter
-    def critic_comments(self, critic_comments: str):
+    def critic_comments(self, critic_comments: int):
         """Sets the critic_comments of this Rating.
 
 
         :param critic_comments: The critic_comments of this Rating.
-        :type critic_comments: str
+        :type critic_comments: int
         """
 
         self._critic_comments = critic_comments

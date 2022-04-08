@@ -5,7 +5,6 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from swagger_server.models.rating import Rating  # noqa: E501
 from swagger_server.test import BaseTestCase
 
 
@@ -17,7 +16,12 @@ class TestRatingController(BaseTestCase):
 
         Adds a rating to an existing movie
         """
-        query_string = [('rating', Rating())]
+        query_string = [('movie_id', 'movie_id_example'),
+                        ('critic', 'critic_example'),
+                        ('user_id', 'user_id_example'),
+                        ('user_trialist', true),
+                        ('user_subscriber', true),
+                        ('user_eligible_for_trial', true)]
         response = self.client.open(
             '/fc44311/ccproject22/1.0.0/rating/add_movie_rating',
             method='POST',
@@ -30,7 +34,17 @@ class TestRatingController(BaseTestCase):
 
         Updates a rating of an existing movie
         """
-        query_string = [('rating', Rating())]
+        query_string = [('movie_id', 'movie_id_example'),
+                        ('rating_id', 'rating_id_example'),
+                        ('rating_url', 'rating_url_example'),
+                        ('rating_score', 56),
+                        ('critic', 'critic_example'),
+                        ('critic_likes', 56),
+                        ('critic_comments', 56),
+                        ('user_id', 'user_id_example'),
+                        ('user_trialist', true),
+                        ('user_subscriber', true),
+                        ('user_eligible_for_trial', true)]
         response = self.client.open(
             '/fc44311/ccproject22/1.0.0/rating/edit_movie_rating',
             method='PUT',
