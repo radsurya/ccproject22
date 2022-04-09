@@ -26,7 +26,7 @@ def movie_get_by_id(movie_id):  # noqa: E501
     return False
 
 
-def movies_search(keyword=None, limit=None):  # noqa: E501
+def movies_search(keyword="", limit=None):  # noqa: E501
     """Search for movies by given search parameters
 
      # noqa: E501
@@ -40,11 +40,10 @@ def movies_search(keyword=None, limit=None):  # noqa: E501
     """
 
     movies = []
-    index = 0
 
-    for movie in movies_data:
-        if keyword in movie["movie_title"] and index < limit and limit:
-            movies.append(movie)
-        index =+ 0
+    if keyword != "" and limit != None:
+        for movie in movies_data:
+            if keyword in movie["movie_title"] and len(movies) < limit:
+                movies.append(movie)
 
     return movies
