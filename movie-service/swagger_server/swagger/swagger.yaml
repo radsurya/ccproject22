@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Movies API
+  title: Movies API - Movie Service
   description: Cloud Computing Project - Movies API
   contact:
     email: fc57267@alunos.fc.ul.pt
