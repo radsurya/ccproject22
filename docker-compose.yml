@@ -34,5 +34,5 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "./database-service/01-sql-create-tables.sql"
-      - "./database-service/02-sql-insert-movie.sql"
+      - "./database-service/01-sql-create-tables.sql:/docker-entrypoint-initdb.d"
+      - "./database-service/02-sql-insert-movie.sql:/docker-entrypoint-initdb.d"
