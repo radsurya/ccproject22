@@ -26,6 +26,7 @@ services:
       - database
   database:
     image: mysql:latest
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mubi_data
@@ -34,5 +35,4 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "./database-service/01-sql-create-tables.sql:/docker-entrypoint-initdb.d"
-      - "./database-service/02-sql-insert-movie.sql:/docker-entrypoint-initdb.d"
+      - ./database:/docker-entrypoint-initdb.d
