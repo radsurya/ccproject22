@@ -40,9 +40,11 @@ tox
 
 To run the 3 micro services and the database on a Docker container, please execute the following from the root directory:
 
-# Build the images and starting up the containers
+```
 docker-compose -f docker-compose.yml up -d --build
 ```
+This will build the images and starting up the containers.
+
 
 ## Team
 This project was developed by Group 3:
