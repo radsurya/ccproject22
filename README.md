@@ -36,6 +36,14 @@ sudo pip install tox
 tox
 ```
 
+## Running with Docker
+
+To run the 3 micro services and the database on a Docker container, please execute the following from the root directory:
+
+# Build the images and starting up the containers
+docker-compose -f docker-compose.yml up -d --build
+```
+
 ## Team
 This project was developed by Group 3:
 - Radica Giva (No. 44311)
