@@ -4,7 +4,7 @@ USE mubi_data;
 
 DROP TABLE IF EXISTS movie;
 CREATE TABLE movie (
-	movie_id VARCHAR(255) PRIMARY KEY,
+	movie_id VARCHAR(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	movie_title VARCHAR(255),
 	movie_release_year FLOAT,
 	movie_url VARCHAR(255),

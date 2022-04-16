@@ -27,11 +27,18 @@ def admin_add_movie(movie_title, movie_title_language, movie_image_url=None, dir
     :rtype: bool
     """
 
+
+    query='INSERT INTO movie (movie_title,movie_title_language, movie_image_url, director_id, director_name, director_url) VALUES (%s,%s,%s,%s,%s,%s);'
+    val = (movie_title, movie_title_language, movie_image_url, director_id, director_name, director_url)
+    #mycursor.execute(sql, val)
+
+    '''
     if movie_title != "":
         movie_exists = movie_exists_by_title(movie_title)
         if not movie_exists:
             # TODO Add movie into DB
             return True
+    '''
 
     return False
 
@@ -76,3 +83,28 @@ def movie_exists_by_id(movie_id):
         if movie['movie_id'] == movie_id:
             return True
     return False
+
+
+
+def db_access(query='select database();'):  
+    try:
+        connection = mysql.connector.connect(host='database',
+                                            database='mubi_data',
+                                            user='user',
+                                            password='user')                                  
+        if connection.is_connected():
+            cursor = connection.cursor()
+            cursor.execute(query)
+            result = [dict((cursor.description[i][0], value) 
+                            for i, value in enumerate(row)) 
+                            for row in cursor.fetchall()]
+
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+            return result
