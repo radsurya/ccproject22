@@ -20,7 +20,7 @@ def movie_get_by_id(movie_id):  # noqa: E501
 
     :rtype: Movie
     """
-    query='''SELECT * FROM movie WHERE movie_id={};'''.format(movie_id)
+    query='SELECT * FROM movie WHERE movie_id=\'{}\';'.format(movie_id)
     result=db_access(query=query)
     return result
      
@@ -46,7 +46,8 @@ def movies_search(keyword="", limit=None):  # noqa: E501
     :rtype: List[Movie]
     """
 
-    query='''SELECT * FROM movie WHERE movie_title LIKE \'{}\' LIMIT {};'''.format('%' + keyword + '%', limit)
+    query='SELECT * FROM movie WHERE movie_title LIKE \'{}\' LIMIT {};'.format('%' + keyword + '%', limit)
+
     result=db_access(query=query)
     return result
 
@@ -74,14 +75,11 @@ def db_access(query='select database();'):
             result = [dict((cursor.description[i][0], value) 
                             for i, value in enumerate(row)) 
                             for row in cursor.fetchall()]
-            #return result
 
     except Error as e:
-        print("Error while connecting to MySQL", e)
-
+        result=str(e)
     finally:
         if connection.is_connected():
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")
             return result
