@@ -6,6 +6,7 @@ metadata:
     app: ccproject22
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: ccproject22
@@ -27,6 +28,7 @@ metadata:
     app: ccproject22
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: ccproject22
@@ -48,6 +50,7 @@ metadata:
     app: ccproject22
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: ccproject22
