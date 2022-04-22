@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  labels:
+    app: ccproject22
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ccproject22
+  template:
+    metadata:
+      labels:
+        app: ccproject22
+    spec:
+      containers:
+      - name: admin
+        image: fc44311/ccproject22_admin
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie
+  labels:
+    app: ccproject22
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ccproject22
+  template:
+    metadata:
+      labels:
+        app: ccproject22
+    spec:
+      containers:
+      - name: movie
+        image: fc44311/ccproject22_movie
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rating
+  labels:
+    app: ccproject22
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ccproject22
+  template:
+    metadata:
+      labels:
+        app: ccproject22
+    spec:
+      containers:
+      - name: rating
+        image: fc44311/ccproject22_rating
