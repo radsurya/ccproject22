@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                //sh '/usr/local/bin/docker-compose build'
-                sh 'docker version'
-                echo 'Finished docker-compose'
+                sh 'docker-compose build'
+			    sh 'docker-compose push'
+                echo 'Finished building!'
             }
         }
         stage('Test') {
