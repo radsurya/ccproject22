@@ -64,6 +64,31 @@ spec:
         image: jonathangehmayr/rating-service:latest
 
 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts-jdk11
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
+      volumes:
+      - name: jenkins-home
+        emptyDir: { }
+
 --- 
 apiVersion: v1
 kind: Service
@@ -102,3 +127,16 @@ spec:
   ports:
     - port: 8080
       nodePort: 30002
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30003
+  selector:
+    app: jenkins

@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building...'
                 sh 'docker-compose build'
                 sh 'docker-compose push'
                 echo 'Finished building!'
@@ -17,7 +17,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying...'
+                sh 'kubectl apply -f services-deployment.yaml'
             }
         }
     }
