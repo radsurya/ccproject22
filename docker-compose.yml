@@ -28,7 +28,7 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: user
       MYSQL_DATABASE: mubi_data
       MYSQL_USER: user
       MYSQL_PASSWORD: user
