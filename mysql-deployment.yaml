@@ -81,7 +81,7 @@ spec:
               key: password
         volumeMounts:
         - name: mysql-pv
-          mountPath: /mnt/data/initdb1.sql
+          mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
           name: mysql
