@@ -106,7 +106,7 @@ def movie_exists_by_id(movie_id):
 
 def db_access(query='select database();', params=None):  
     try:
-        connection = mysql.connector.connect(host='database',
+        connection = mysql.connector.connect(host='mysql',
                                             database='mubi_data',
                                             user='user',
                                             password='user')                                  

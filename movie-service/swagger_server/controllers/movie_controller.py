@@ -65,7 +65,7 @@ def movies_search(keyword="", limit=None):  # noqa: E501
 
 def db_access(query='select database();'):  
     try:
-        connection = mysql.connector.connect(host='database',
+        connection = mysql.connector.connect(host='mysql',
                                             database='mubi_data',
                                             user='user',
                                             password='user')                                  

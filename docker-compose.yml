@@ -7,7 +7,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - database
+      - mysql
   movie:
     container_name: movie-service
     build:
@@ -15,7 +15,7 @@ services:
     ports:
       - 8081:8081
     depends_on:
-      - database
+      - mysql
   rating:
     container_name: rating-service
     build:
@@ -23,8 +23,8 @@ services:
     ports:
       - 8082:8082
     depends_on:
-      - database
-  database:
+      - mysql
+  mysql:
     image: mysql:latest
     restart: always
     environment:
