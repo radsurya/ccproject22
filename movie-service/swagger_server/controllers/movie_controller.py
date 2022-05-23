@@ -1,5 +1,6 @@
 import connexion
 import six
+import os
 
 from swagger_server.models.movie import Movie  # noqa: E501
 from swagger_server import util
@@ -65,7 +66,10 @@ def movies_search(keyword="", limit=None):  # noqa: E501
 
 def db_access(query='select database();'):  
     try:
-        connection = mysql.connector.connect(host='mysql',
+        # Get MySQL database host from environment variable
+        mysql_db_host = os.getenv('MYSQL_DB_HOST')
+
+        connection = mysql.connector.connect(host=mysql_db_host,
                                             database='mubi_data',
                                             user='user',
                                             password='user')                                  

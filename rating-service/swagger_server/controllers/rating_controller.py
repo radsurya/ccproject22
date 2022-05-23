@@ -2,6 +2,7 @@ import connexion
 import six
 import random
 import string
+import os
 
 from swagger_server import util
 
@@ -153,7 +154,10 @@ def rating_exists_by_id(rating_id):
 
 def db_access(query='select database();', params=None):  
     try:
-        connection = mysql.connector.connect(host='mysql',
+        # Get MySQL database host from environment variable
+        mysql_db_host = os.getenv('MYSQL_DB_HOST')
+
+        connection = mysql.connector.connect(host=mysql_db_host,
                                             database='mubi_data',
                                             user='user',
                                             password='user')                                  

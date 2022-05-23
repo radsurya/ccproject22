@@ -18,6 +18,9 @@ spec:
       containers:
       - name: admin-service
         image: fc44311/admin-service:v1
+        env:
+        - name: MYSQL_DB_HOST
+          value: "35.197.14.87"
         resources:
           requests:
             memory: "64Mi"
@@ -59,6 +62,9 @@ spec:
       containers:
       - name: movie-service
         image: fc44311/movie-service:v1
+        env:
+        - name: MYSQL_DB_HOST
+          value: "35.197.14.87"
         resources:
           requests:
             memory: "64Mi"
@@ -100,6 +106,9 @@ spec:
       containers:
       - name: rating-service
         image: fc44311/rating-service:v1
+        env:
+        - name: MYSQL_DB_HOST
+          value: "35.197.14.87"
         resources:
           requests:
             memory: "64Mi"

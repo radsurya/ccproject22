@@ -2,6 +2,7 @@ import connexion
 import six
 import random
 import string
+import os
 
 from swagger_server import util
 
@@ -9,7 +10,6 @@ from swagger_server.data.movies_data import movies_data
 
 import mysql.connector
 from mysql.connector import Error
-
 
 def admin_add_movie(movie_title, movie_title_language, movie_image_url=None, director_id=None, director_name=None, director_url=None):  # noqa: E501
     """Add a new movie information
@@ -106,7 +106,10 @@ def movie_exists_by_id(movie_id):
 
 def db_access(query='select database();', params=None):  
     try:
-        connection = mysql.connector.connect(host='mysql',
+        # Get MySQL database host from environment variable
+        mysql_db_host = os.getenv('MYSQL_DB_HOST')
+        
+        connection = mysql.connector.connect(host=mysql_db_host,
                                             database='mubi_data',
                                             user='user',
                                             password='user')                                  
