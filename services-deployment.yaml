@@ -20,7 +20,7 @@ spec:
         image: fc44311/admin-service:latest
         env:
         - name: MYSQL_DB_HOST
-          value: "35.197.14.87"
+          value: "35.233.63.181"
         resources:
           requests:
             memory: "64Mi"
@@ -64,7 +64,7 @@ spec:
         image: fc44311/movie-service:latest
         env:
         - name: MYSQL_DB_HOST
-          value: "35.197.14.87"
+          value: "35.233.63.181"
         resources:
           requests:
             memory: "64Mi"
@@ -108,7 +108,7 @@ spec:
         image: fc44311/rating-service:latest
         env:
         - name: MYSQL_DB_HOST
-          value: "35.197.14.87"
+          value: "35.233.63.181"
         resources:
           requests:
             memory: "64Mi"
