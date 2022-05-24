@@ -40,8 +40,6 @@ services:
 
 
   mysql:
-    #build:
-    #  context: ./rating-service
     image: mysql:latest
     restart: always
     environment:

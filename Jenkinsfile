@@ -26,7 +26,7 @@ pipeline {
                 sh 'kubectl apply -f mysql-deployment.yaml -n cc'
                 sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb1.sql"'
                 sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb2.sql"'
-                sh 'kubectl apply -f services-deployment.yaml -n cc'               
+                sh 'kubectl apply -f services-deployment.yaml -n cc'             
             }
         }
     }
