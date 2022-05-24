@@ -26,6 +26,7 @@ pipeline {
                 sh 'kubectl apply -f mysql-deployment.yaml -n cc'
                 sh 'mysql -h 35.233.63.181 -u user -p'
                 sh 'user'
+                sh 'use mubi_data;'
                 sh 'source /home/jonathangehmayr/projects/ccproject22/database/initdb1.sql'
                 sh 'source /home/jonathangehmayr/projects/ccproject22/database/initdb2.sql'
                 sh 'kubectl apply -f services-deployment.yaml -n cc'               
