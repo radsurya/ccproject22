@@ -6,31 +6,42 @@ services:
       context: ./admin-service
     environment:
       MYSQL_DB_HOST: "mysql"
+    image: fc44311/admin-service:latest
     ports:
       - 8080:8080
     depends_on:
       - mysql
+
+
   movie:
     container_name: movie-service
     build:
       context: ./movie-service
     environment:
       MYSQL_DB_HOST: "mysql"
+    image: fc44311/movie-service:latest
     ports:
       - 8081:8081
     depends_on:
       - mysql
+
+
   rating:
     container_name: rating-service
     build:
       context: ./rating-service
     environment:
       MYSQL_DB_HOST: "mysql"
+    image: fc44311/rating-service:latest
     ports:
       - 8082:8082
     depends_on:
       - mysql
+
+
   mysql:
+    #build:
+    #  context: ./rating-service
     image: mysql:latest
     restart: always
     environment:

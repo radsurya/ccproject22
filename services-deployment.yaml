@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: admin-service
-        image: fc44311/admin-service:v1
+        image: fc44311/admin-service:latest
         env:
         - name: MYSQL_DB_HOST
           value: "35.197.14.87"
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
       - name: movie-service
-        image: fc44311/movie-service:v1
+        image: fc44311/movie-service:latest
         env:
         - name: MYSQL_DB_HOST
           value: "35.197.14.87"
@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
       - name: rating-service
-        image: fc44311/rating-service:v1
+        image: fc44311/rating-service:latest
         env:
         - name: MYSQL_DB_HOST
           value: "35.197.14.87"
