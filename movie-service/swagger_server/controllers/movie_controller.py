@@ -48,7 +48,6 @@ def movies_search(keyword="", limit=None):  # noqa: E501
     """
 
     query='SELECT * FROM movie WHERE movie_title LIKE \'{}\' LIMIT {};'.format('%' + keyword + '%', limit)
-
     result=db_access(query=query)
     return result
 
