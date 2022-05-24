@@ -24,11 +24,8 @@ pipeline {
                 sh 'kubectl create namespace cc'
                 sh 'kubectl apply -f mysql-secret.yaml -n cc'
                 sh 'kubectl apply -f mysql-deployment.yaml -n cc'
-                sh 'mysql -h 35.233.63.181 -u user -p'
-                sh 'user'
-                sh 'use mubi_data;'
-                sh 'source /home/jonathangehmayr/projects/ccproject22/database/initdb1.sql'
-                sh 'source /home/jonathangehmayr/projects/ccproject22/database/initdb2.sql'
+                sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb1.sql"'
+                sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb2.sql"'
                 sh 'kubectl apply -f services-deployment.yaml -n cc'               
             }
         }
