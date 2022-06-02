@@ -14,7 +14,8 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'cd movie-service'
-                sh 'python -m unittest discover'
+                //sh 'python -m unittest discover'
+                sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'
                 //sh 'docker-compose down'
             }
         }
