@@ -37,6 +37,7 @@ class TestMovieController(BaseTestCase):
         self.keyword='the'
 
     def test_movie_get_by_id_valid_id(self):
+        print('hellloooooooo from tests')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movie/get_by_id/"
         url=url+'{}'.format(self.valid_id)
         response = requests.get(url = url)
