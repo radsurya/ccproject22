@@ -19,11 +19,11 @@ pipeline {
                 sh "pwd"
                 dir('movie-service') {
                      sh "pwd"
-                     sh 'python3 -m unittest discover'
+                     sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'
 
                 }
                 sh "pwd"
-                sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
+                //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
                 //sh 'docker-compose down'
             }
         }
