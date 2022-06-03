@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: admin-deployment
+  namespace: cc
   labels:
     app: ccproject22-admin
 spec:
@@ -46,6 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: movie-deployment
+  namespace: cc
   labels:
     app: ccproject22-movie
 spec:
@@ -90,6 +92,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rating-deployment
+  namespace: cc
   labels:
     app: ccproject22-rating
 spec:
@@ -134,6 +137,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: admin-service-lb
+  namespace: cc
   labels:
     app: nginx
 spec:
@@ -149,6 +153,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: movie-service-lb
+  namespace: cc
   labels:
     app: nginx
 spec:
@@ -164,6 +169,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rating-service-lb
+  namespace: cc
   labels:
     app: nginx
 spec:
