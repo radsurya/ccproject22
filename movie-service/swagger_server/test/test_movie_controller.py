@@ -47,6 +47,7 @@ class TestMovieController(BaseTestCase):
         movie_id_reponse=response[0]['movie_id']
         self.assertEqual(movie_id_reponse, self.valid_id, "Did not find the correct record")
     
+    
     def test_movie_get_by_id_invalid_id(self):
         print('Running test: test_movie_get_by_id_invalid_id')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movie/get_by_id/"
