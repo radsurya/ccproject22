@@ -13,17 +13,21 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'pwd'
-                sh 'cd movie-service'
-                //sh 'python3 -m unittest discover'
+                // Activate Python venv
+                dir('/home/jonathangehmayr/dir_envs/') {
+                    sh 'source cc/bin/activate'
+                }
+
                 sh "pwd"
                 dir('movie-service') {
-                     sh "pwd"
-                     sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'
+                    sh "pwd"
+                    sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
+                    sh 'python3 -m unittest discover' 
+                    //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
 
                 }
                 sh "pwd"
-                //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
+
                 //sh 'docker-compose down'
             }
         }
