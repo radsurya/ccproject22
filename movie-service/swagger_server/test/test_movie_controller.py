@@ -37,7 +37,7 @@ class TestMovieController(BaseTestCase):
         self.keyword='the'
 
     def test_movie_get_by_id_valid_id(self):
-        print('hellloooooooo from tests')
+        print('Running test: test_movie_get_by_id_valid_id')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movie/get_by_id/"
         url=url+'{}'.format(self.valid_id)
         response = requests.get(url = url)
@@ -48,6 +48,7 @@ class TestMovieController(BaseTestCase):
         self.assertEqual(movie_id_reponse, self.valid_id, "Did not find the correct record")
     
     def test_movie_get_by_id_invalid_id(self):
+        print('Running test: test_movie_get_by_id_invalid_id')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movie/get_by_id/"
         url=url+'{}'.format(self.invalid_id)
         response = requests.get(url = url)
@@ -57,6 +58,7 @@ class TestMovieController(BaseTestCase):
     
 
     def test_movie_search_valid_keyword(self):
+        print('Running test: test_movie_search_valid_keyword')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movies/search?keyword={}&limit={}"
         url=url.format(self.keyword, self.limit)
         response = requests.get(url = url)
@@ -79,6 +81,7 @@ class TestMovieController(BaseTestCase):
         self.assertEqual(keyword_in_all_responses, False, "Keyword was not found in all results.")
     
     def test_movie_search_unfindable_keyword(self):
+        print('Running test: test_movie_search_unfindable_keyword')
         url = "http://localhost:8081/fc44311/ccproject22/1.0.0/movies/search?keyword={}&limit={}"
         url=url.format(self.unfindable_keyword, self.limit)
         response = requests.get(url = url)

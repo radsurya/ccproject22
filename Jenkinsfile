@@ -22,7 +22,7 @@ pipeline {
                 dir('movie-service') {
                     sh "pwd"
                     sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
-                    sh 'python3 -m unittest discover' 
+                    //sh 'python3 -m unittest discover' 
                     //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
 
                 }
