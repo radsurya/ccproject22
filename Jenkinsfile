@@ -14,10 +14,10 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Activate Python venv
-                dir('/home/jonathangehmayr/dir_envs/') {
-                    sh 'source cc/bin/activate'
-                }
-
+                //dir('/home/jonathangehmayr/dir_envs/') {
+                //    sh 'source cc/bin/activate'
+                //}
+                sh 'export PYTHONPATH=/home/jonathangehmayr/dir_envs/cc/lib/python3.8/site-packages'
                 sh "pwd"
                 dir('movie-service') {
                     sh "pwd"
