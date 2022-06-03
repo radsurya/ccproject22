@@ -13,8 +13,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'pwd'
                 sh 'cd movie-service'
                 //sh 'python3 -m unittest discover'
+                sh 'pwd'
+                sh 'cd movie-service'
                 sh 'pwd'
                 sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
                 //sh 'docker-compose down'
