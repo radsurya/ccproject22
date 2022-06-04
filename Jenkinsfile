@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'docker-compose up -d --build'
-                sh 'docker-compose down'
                 sh 'docker tag mysql:latest fc44311/mysql:latest'
                 echo 'Finished building!'
             }
@@ -14,6 +13,25 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+
+                sh '''
+                    rm -r .env
+                    mkdir -p .env
+                    cd .env
+
+                    if ! [ -d "venv" ]; then
+                        python3 -m venv venv
+                        . venv/bin/activate
+                        pip install -r ../movie-service/test-requirements.txt
+                        pip install connexion[swagger-ui]
+                    fi
+
+                    . venv/bin/activate  
+                    cd ../movie-service
+                    python3 -m unittest discover
+                '''
+
+                sh 'docker-compose down'
             }
         }
         stage('Deploy') {
