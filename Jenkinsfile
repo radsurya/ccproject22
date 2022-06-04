@@ -18,13 +18,13 @@ pipeline {
                 dir('/home/jonathangehmayr/dir_envs/') {
                     sh '. cc/bin/activate'
                 }
-                sh 'export PYTHONPATH=/home/jonathangehmayr/dir_envs/cc/lib/python3.8/site-packages'
+
                 sh "pwd"
                 // use test requirements for testing
                 dir('movie-service') {
                     sh "pwd"
-                    sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
-                    //sh 'python3 -m unittest discover' 
+                    //sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
+                    sh 'python3 -m unittest discover' 
                     //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
 
                 }
