@@ -21,7 +21,6 @@ pipeline {
 
                 sh "pwd"
                 // use test requirements for testing
-                //                    pip install virtualenv
                 sh '''
                     mkdir -p .env
                     cd .env
@@ -31,9 +30,11 @@ pipeline {
                         . venv/bin/activate
                         pip install -r ../movie-service/test-requirements.txt
                     fi
+
                     . venv/bin/activate  
                     cd ../movie-service
                     python3 -m unittest discover
+                    rm -d ../.env/venv
                 '''
                 dir('movie-service') {
                     sh "pwd"
