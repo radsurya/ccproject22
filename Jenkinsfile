@@ -21,12 +21,13 @@ pipeline {
 
                 sh "pwd"
                 // use test requirements for testing
+                //                    pip install virtualenv
                 sh '''
                     mkdir -p .env
                     cd .env
-                    pip install virtualenv
+
                     if ! [ -d "venv" ]; then
-                        virtualenv venv
+                        python3 -m venv venv
                         . venv/bin/activate
                         pip install -r ../movie-service/test-requirements.txt
                     fi
