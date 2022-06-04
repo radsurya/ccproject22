@@ -12,17 +12,6 @@ import requests
 
 
 
-
-
-
-'''
-URL = "http://localhost:8081/fc44311/ccproject22/1.0.0/movie/get_by_id/"
-movie_id = "1"
-PARAMS = {'movie_id':movie_id}
-r = requests.get(url = URL, params = PARAMS)
-data = r.json()
-'''
-
 class TestMovieController(BaseTestCase):
     """MovieController integration test stubs"""
 
