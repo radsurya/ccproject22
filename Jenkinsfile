@@ -22,6 +22,7 @@ pipeline {
                 sh "pwd"
                 // use test requirements for testing
                 sh '''
+                    rm -d .env
                     mkdir -p .env
                     cd .env
 
@@ -34,7 +35,6 @@ pipeline {
                     . venv/bin/activate  
                     cd ../movie-service
                     python3 -m unittest discover
-                    rm -d ../.env/venv
                 '''
                 dir('movie-service') {
                     sh "pwd"
