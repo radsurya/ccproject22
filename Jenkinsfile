@@ -14,13 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                // Activate Python venv
-                dir('/home/jonathangehmayr/dir_envs/') {
-                    sh '. cc/bin/activate'
-                }
 
-                sh "pwd"
-                // use test requirements for testing
                 sh '''
                     rm -r .env
                     mkdir -p .env
@@ -37,14 +31,6 @@ pipeline {
                     cd ../movie-service
                     python3 -m unittest discover
                 '''
-                dir('movie-service') {
-                    sh "pwd"
-                    //sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
-                    sh 'python3 -m unittest discover' 
-                    //sh 'python3 -m unittest swagger_server/test/test_movie_controller.py'
-
-                }
-                sh "pwd"
 
                 //sh 'docker-compose down'
             }
