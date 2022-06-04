@@ -10,7 +10,7 @@ pipeline {
                 echo 'Finished building!'
             }
         }
-        //https://stackoverflow.com/questions/40836570/jenkinsfile-and-python-virtualenv
+
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -32,7 +32,7 @@ pipeline {
                     python3 -m unittest discover
                 '''
 
-                //sh 'docker-compose down'
+                sh 'docker-compose down'
             }
         }
         stage('Deploy') {
