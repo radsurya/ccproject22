@@ -30,6 +30,7 @@ pipeline {
                         python3 -m venv venv
                         . venv/bin/activate
                         pip install -r ../movie-service/test-requirements.txt
+                        pip install connexion[swagger-ui]
                     fi
 
                     . venv/bin/activate  
