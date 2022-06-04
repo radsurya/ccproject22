@@ -22,11 +22,11 @@ pipeline {
                 sh "pwd"
                 // use test requirements for testing
                 sh '''
-                    cd
-                    cd dir_envs
-                    . cc/bin/activate
-                    cd
-                    cd projects/ccproject22/movie-service
+                    cd .env
+                    virtualenv venv
+                    . venv/bin/activate
+                    pip install -r ../movie-service/test-requirements.txt
+                    cd ../movie-service
                     python3 -m unittest discover
                 '''
                 dir('movie-service') {
