@@ -21,6 +21,14 @@ pipeline {
 
                 sh "pwd"
                 // use test requirements for testing
+                sh '''
+                    cd
+                    cd dir_envs
+                    . cc/bin/activate
+                    cd
+                    cd projects/ccproject22/movie-service
+                    python3 -m unittest discover
+                '''
                 dir('movie-service') {
                     sh "pwd"
                     //sh '/home/jonathangehmayr/dir_envs/cc/bin/python3 -m unittest discover'         
