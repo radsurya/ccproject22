@@ -15,14 +15,14 @@ import requests
 class TestMovieController(BaseTestCase):
     """MovieController integration test stubs"""
 
-    def __init__(self,*args, **kwargs):#self,**kwargs
+    def __init__(self,*args, **kwargs):
         super(BaseTestCase, self).__init__(*args,**kwargs)
         self.valid_id='1'
         self.invalid_id='-1'
         self.search_term='the'
         self.limit='5'
         self.invalid_limit='-1'
-        self.unfindable_keyword='string that no tittle will contain'
+        self.unfindable_keyword='string that no title will contain'
         self.keyword='the'
 
     def test_movie_get_by_id_valid_id(self):
