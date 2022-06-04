@@ -22,6 +22,7 @@ pipeline {
                 sh "pwd"
                 // use test requirements for testing
                 sh '''
+                    mkdir .env
                     cd .env
                     virtualenv venv
                     . venv/bin/activate
