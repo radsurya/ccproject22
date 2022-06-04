@@ -22,7 +22,7 @@ pipeline {
                 sh "pwd"
                 // use test requirements for testing
                 sh '''
-                    rm -d .env
+                    rm -r .env
                     mkdir -p .env
                     cd .env
 
