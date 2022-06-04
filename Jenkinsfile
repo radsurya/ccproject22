@@ -24,6 +24,7 @@ pipeline {
                 sh '''
                     mkdir .env
                     cd .env
+                    pip install virtualenv
                     virtualenv venv
                     . venv/bin/activate
                     pip install -r ../movie-service/test-requirements.txt
