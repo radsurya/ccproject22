@@ -11,6 +11,11 @@ spec:
   selector:
     matchLabels:
       app: ccproject22-admin
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
       labels:
@@ -56,6 +61,11 @@ spec:
   selector:
     matchLabels:
       app: ccproject22-movie
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
       labels:
@@ -101,6 +111,11 @@ spec:
   selector:
     matchLabels:
       app: ccproject22-rating
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
       labels:
