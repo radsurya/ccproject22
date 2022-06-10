@@ -6,7 +6,7 @@ metadata:
   labels:
     app: ccproject22-admin
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -51,7 +51,7 @@ metadata:
   labels:
     app: ccproject22-movie
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -96,7 +96,7 @@ metadata:
   labels:
     app: ccproject22-rating
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
