@@ -1,0 +1,69 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: movie-service-scaling
+  namespace: cc
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: movie-deployment
+      namespace: cc
+      labels:
+        app: ccproject22-movie
+    spec:
+      replicas: 1
+      revisionHistoryLimit: 10
+      selector:
+        matchLabels:
+          app: ccproject22-movie
+      template:
+        metadata:
+          labels:
+            app: ccproject22-movie
+        spec:
+          containers:
+          - name: movie-service
+            image: fc44311/movie-service:latest
+            env:
+            - name: MYSQL_DB_HOST
+              value: "35.233.63.181"
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "125m"
+              limits:
+                memory: "128Mi"
+                cpu: "250m"
+            readinessProbe:
+              httpGet:
+                path: /fc44311/ccproject22/1.0.0/ui
+                port: 8081
+              initialDelaySeconds: 5
+              periodSeconds: 5
+            livenessProbe:
+              httpGet:
+                path: /fc44311/ccproject22/1.0.0/ui
+                port: 8081
+              initialDelaySeconds: 5
+              periodSeconds: 5
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-service-lb
+  namespace: cc
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: ccproject22-movie
+  ports:
+    - port: 80
+      targetPort: 8081
