@@ -15,7 +15,7 @@ pipeline {
                 echo 'Testing..'
 
                 sh '''
-                    rm -r .env
+                    rm -rf .env
                     mkdir -p .env
                     cd .env
 
@@ -44,7 +44,8 @@ pipeline {
                 sh 'kubectl apply -f mysql-deployment.yaml'
                 sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb1.sql"'
                 sh 'mysql --password=user --user=user --host=35.233.63.181 --database=mubi_data < "database/initdb2.sql"'
-                sh 'kubectl apply -f services-deployment.yaml'             
+                sh 'kubectl apply -f services-deployment.yaml'  
+                sh 'kubectl apply -f autoscale-deployments.yaml'       
             }
         }
     }
