@@ -57,6 +57,6 @@ Install Jenkins locally and connect with Github repository. When the pipeline is
 
 
 ## Team
-This project was developed by Group 2:
+This project was developed by Group  of 2:
 - Radica Giva (No. 44311)
 - Jonathan Gehmayr (No. 57267)
